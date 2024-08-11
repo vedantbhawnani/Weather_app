@@ -76,18 +76,13 @@ class _HomePageState extends State<HomePage> {
                       style: textTheme.headlineSmall,
                     ),
                     Padding(padding: EdgeInsets.only(top: height / 8)),
-                    SvgPicture.asset(
-                      WeatherConditions.getWeatherCondition(
-                          currentWeather['weather'][0]['id'])['image']!,
-                      colorFilter: darkMode
-                          ? const ColorFilter.mode(
-                              Colors.white, BlendMode.srcIn)
-                          : const ColorFilter.mode(
-                              Colors.black, BlendMode.srcIn),
+                    Image.network(
+                      'https://openweathermap.org/img/wn/${currentWeather['weather'][0]["icon"]}@2x.png',
+                      color: darkMode ? Colors.white : Colors.black,
                       height: height / 6,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: width * 0.05),
+                      padding: EdgeInsets.only(left: width * 0.05), 
                       child: Text(
                         "${(currentWeather['main']['temp'].round() - 273.15).round()}°",
                         style: textTheme.labelLarge,

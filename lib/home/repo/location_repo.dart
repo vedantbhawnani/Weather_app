@@ -40,7 +40,7 @@ class LocationRepo {
     try {
       var response = await client.get(
         Uri.parse(
-            "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=${APIKEY}"),
+            "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=22d25b5d78fa5d57eefdfd50069a82a7"),
       );
       Map<String, dynamic> result = jsonDecode(response.body);
       return result;
@@ -57,7 +57,7 @@ class LocationRepo {
     Address address =
         await geoCode.reverseGeocoding(latitude: lat, longitude: lang);
     print(address);
-    if (address.streetNumber == null) {
+    if (address.streetAddress == null) {
       return "📍Here";
     }
     return "${address.streetAddress}, ${address.city}";
